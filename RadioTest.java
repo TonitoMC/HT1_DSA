@@ -6,10 +6,11 @@
  * @since 17-01-2024
  */
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 class RadioTest {
     /**
      * Esta prueba unitaria toma 4 casos diferentes para comprobar el funcionamiento correcto del metodo subirEmisora.
@@ -49,5 +50,12 @@ class RadioTest {
 
         assertEquals(estacionEsperada, radio.getEstacion());
     }
+    @ParameterizedTest
+    @CsvSource({"20","30", "40"})
+    void setVolumen(int volumen){
+        Radio radio = new Radio();
 
+        radio.setVolumen(volumen);
+        assertEquals(volumen, radio.getVolumen());
+    }
 }
