@@ -77,4 +77,5 @@ public interface ElMejorRadio {
      * @return True para FM, False para AM
      */
     boolean getIsFM();
+    Float[] getLista();
 }
