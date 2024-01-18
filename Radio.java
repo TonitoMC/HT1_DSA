@@ -7,11 +7,11 @@
  */
 
 public class Radio implements ElMejorRadio {
-    int volumen=50;
-    Float estacion=87.9f;
-    Float[] lista;
-    Boolean isFM=true;
-    Boolean isEncendido=false;
+    private int volumen=50;
+    private Float estacion=87.9f;
+    private Float[] lista;
+    private Boolean isFM=true;
+    private Boolean isEncendido=false;
 
     /**
      * Constructor para la clase Radio, crea el nuevo objeto y la lista de 12 valores para guardar emisoras

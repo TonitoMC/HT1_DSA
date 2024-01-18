@@ -37,29 +37,32 @@ public class Main {
     /*
      * Funcion para verificar todas las variables del radio e imprimirlas
      */
-    public static void estadoRadio(Radio rad){
-        String encendido="OF";
-        String banda="";
-        if(rad.getEncendido()==true){
-            encendido="ON";
+    public static void estadoRadio(Radio rad) {
+        String encendido = "OF";
+        String banda = "";
+        if (rad.getEncendido() == true) {
+            encendido = "ON";
         }
-        if(rad.getEncendido()==false){
-            encendido="OF";
+        if (rad.getEncendido() == false) {
+            encendido = "OF";
         }
-        if(rad.getIsFM()==true){
-            banda="FM";
+        if (rad.getIsFM() == true) {
+            banda = "FM";
         }
-        if(rad.getIsFM()==false){
-            banda="AM";
+        if (rad.getIsFM() == false) {
+            banda = "AM";
         }
 
-        System.out.println("\n\n ON/OF: "+encendido);
-        System.out.println("Volumen: "+ rad.getVolumen());
-        System.out.println("Banda: "+ banda);
-        System.out.println("Estación: "+ rad.getEstacion());
+        System.out.println("\n\n ON/OF: " + encendido);
+        System.out.println("Volumen: " + rad.getVolumen());
+        System.out.println("Banda: " + banda);
+        System.out.println("Estación: " + rad.getEstacion());
         System.out.println("Lista de guardadas: ");
-        System.out.println(rad.getLista());
-
+        for (Float value : rad.getLista()) {
+            if (value != null) {
+                System.out.print(value + " ");
+            }
+        }
     }
 
     public static void main(String[] args){
@@ -93,14 +96,18 @@ public class Main {
                 rad.bajarEmisora();
             }
 
-            else if(opcion==5 && rad.getEncendido()==true){
+            else if(opcion==5 && rad.getEncendido()==true) {
                 int posicion;
                 float estacion;
                 System.out.println("La lista de estaciones guardadas es la siguiente:");
-                System.out.println(rad.getLista());
+                for (Float value : rad.getLista()) {
+                    if (value != null) {
+                        System.out.print(value + " ");
+                    }
+                }
                 System.out.println("¿En que posición desea guardar la estación");
                 posicion = scan.nextInt();
-                while(posicion<0||posicion>11){
+                while (posicion < 0 || posicion > 11) {
                     System.out.println("Posicion invalida, vuelva a intentarlo");
                     System.out.println("¿En que posición desea guardar la estación?");
                     posicion = scan.nextInt();
@@ -108,9 +115,12 @@ public class Main {
                 System.out.println("¿Que estación desea guardar?");
                 estacion = scan.nextFloat();
                 rad.guardarEmisora(posicion, estacion);
-                System.out.println(rad.getLista());
+                for (Float value : rad.getLista()) {
+                    if (value != null) {
+                        System.out.print(value + " ");
+                    }
+                }
             }
-
             else if(opcion==6 && rad.getEncendido()==true){
                 int posicion;
                 System.out.println("¿Cual es la posicón de estación que quiere escuchar?");
